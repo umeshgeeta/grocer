@@ -1,8 +1,8 @@
 package com.neosemantix.grocer;
 
+import java.util.Iterator;
 import java.util.List;
 
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -14,22 +14,23 @@ import com.neosemantix.grocer.model.Grocer;
 import com.neosemantix.grocer.service.RegistrationService;
 import com.neosemantix.grocer.service.StockListService;
 
+import reactor.core.publisher.Flux;
+
 //@SpringBootTest
 @DataMongoTest 
 @Import({RegistrationService.class, StockListService.class})
-class GrocerApplicationTests {
+class RegistrationTest {
 	
 	private final RegistrationService regService;
 	private final StockListService stockListService;
 	
-	public GrocerApplicationTests(@Autowired RegistrationService rs,
+	public RegistrationTest(@Autowired RegistrationService rs,
 			@Autowired StockListService sl) {
 		this.regService = rs;
 		this.stockListService = sl;
 	}
 	
 	@Test
-	@Order(1)
 	public void registerConsumer() {
 		Consumer s = new Consumer();
 		String name = "John Smith";
@@ -46,9 +47,8 @@ class GrocerApplicationTests {
 		Assert.isTrue(retrieved.getLocation().equals(loc), "Location not matched");
 		System.out.println("Retrieved consumer matches: " + retrieved);
 	}
-	
+
 	@Test
-	@Order(2)
 	public void registerGrocer() {
 		List<Grocer> grcs = SampleGroceryDistribution.groceryList;
 		for(Grocer g: grcs) {
@@ -57,12 +57,7 @@ class GrocerApplicationTests {
 		}
 		stockListService.getAll().subscribe(grocer -> {
 			Assert.isTrue(SampleGroceryDistribution.validateGrocer(grocer), "Grocer not matched: " + grocer);
-			System.out.println("Validated grocer: " + grocer);
+			System.out.println("Validated grocer: " + grocer);			
 		});
-		
 	}
-	
-	
-
-
 }

@@ -12,18 +12,24 @@ import java.util.Set;
 import com.neosemantix.grocer.model.Grocer;
 
 public class SampleGroceryDistribution {
+	
+	public static final String Loc_Saratoga = "Saratoga";
+	public static final String Loc_Cupertino = "Cupertino";
+	public static final String Loc_SanJose = "San Jose";
 
 	private static Map<Integer, String> StockList = new HashMap<>();
 	private static Map<String, Integer> ReverseStockList = new HashMap<>();
 	private static Map<Integer, Short> PowerOfTwo = new HashMap<>();
 	
 	private static String[][] distribution = {
-			{"Saratoga",	"Nob Hill",		"110"},
-			{"Saratoga",	"Safeway",		"230"},
-			{"Cupertino",	"Ranch 99",		"158"},
-			{"San Jose",	"Ranch 99",		"94"},
-			{"San Jose",	"Safeway",		"174"}
+			{Loc_Saratoga,	"Nob Hill",		"110"},
+			{Loc_Saratoga,	"Safeway",		"230"},
+			{Loc_Cupertino,	"Ranch 99",		"158"},
+			{Loc_SanJose,	"Ranch 99",		"94"},
+			{Loc_SanJose,	"Safeway",		"174"}
 	};
+	
+	public static List<Grocer> groceryList;
 	
 	static {
 		StockList.put(1, "Banana");
@@ -55,9 +61,9 @@ public class SampleGroceryDistribution {
 		PowerOfTwo.put(5, (short) 32);
 		PowerOfTwo.put(6, (short) 64);
 		PowerOfTwo.put(7, (short) 128);
+		
+		groceryList = buildDistribuion();
 	}
-	
-	public static final List<Grocer> groceryList = buildDistribuion();
 	
 /*
  * We are going with following distribution of stock items over different Gorcers at different locations.
@@ -147,7 +153,7 @@ This translates into:
 			
 			switch (location) {
 			
-			case "Saratoga":
+			case Loc_Saratoga:
 				
 				switch(grocerName) {
 				case "Nob Hill":
@@ -165,7 +171,7 @@ This translates into:
 				break;
 				
 				
-			case "Cupertino":
+			case Loc_Cupertino:
 				if (grocerName.equals("Ranch 99")) {
 					if (encodeStockList(g.getItemsOnSale()).equals(distribution[2][2])) {
 						result = true;
@@ -174,7 +180,7 @@ This translates into:
 				break;
 				
 				
-			case "San Jose":
+			case Loc_SanJose:
 				
 				switch(grocerName) {
 				case "Ranch 99":
