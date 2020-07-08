@@ -26,3 +26,8 @@ Primarily reactive Spring Boot is finding utility so as essentially 'producer' d
 
 Testing
 A core part of testing involves creating a grocery distribution of 5 stores among 3 cities. These stores 5 of 7 items so we have some non-trivial cases for checking that we return exactly those stores which sell the specific item. MongoDB provides a nifty 'in' operator to return all Grocer documents which has the specified item in the 'itemOnSale' list of that store. All this deployment is elaborately described and encapsulated in the class com.neosemantix.grocer.SampleGroceryDistribution under test/java folder. It also has some fun code using 'bitwise' operations to determine what each store sells.
+
+How to run?
+You can import the maven project in Eclipse or your IDE of choice and from the POM file you will get the project. If it is cleanly build, you can run the jar as a standalong application.
+
+Maven tests would run tests in 2 classes - GroceryLocationTest and RegistrationTest. The RestApiTest is more of a functional test than a unit test. This being a small application, instead of mocking for API tests; you would run the application at "localhost:8080" and the API calls will be made against that when you invoke this test.
