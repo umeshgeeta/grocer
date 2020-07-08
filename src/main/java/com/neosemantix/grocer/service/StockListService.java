@@ -26,5 +26,9 @@ public class StockListService {
 	public Flux<Grocer> getAll(){
 		return this.grocerRepository.findAll();
 	}
+	
+	public Flux<Grocer> findSellingItem(String item){
+		return this.grocerRepository.findSellingItem(item);
+	}
 
 }

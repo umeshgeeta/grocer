@@ -31,7 +31,7 @@ public class GrocreyLocationTest {
 	}
 
 	@Test
-	public void test3_gorcersByLocation() {
+	public void gorcersByLocationAndSellingItems() {
 		List<Grocer> grcs = SampleGroceryDistribution.groceryList;
 		for(Grocer g: grcs) {
 			String gid = regService.registerGrocer(g);
@@ -42,6 +42,20 @@ public class GrocreyLocationTest {
 		Assert.isTrue(validateGrocersByLocation(SampleGroceryDistribution.Loc_SanJose, 2), "Grocery validation in " + SampleGroceryDistribution.Loc_SanJose + " failed.");;
 	
 		System.out.println("Validated locationwise stores ");
+		
+		Flux<Grocer> grocers = stockListService.findSellingItem("Prawn");
+		// We expect Ranch 99 - Cupertino & San Jose - to sell this item.	
+		// We validate these two grocers
+		grocers.subscribe(store -> {
+			Assert.isTrue(store.getName().equals("Ranch 99"), "Expected grocer is Ranch 99 only.");
+			String loc = store.getLocation();
+			Assert.isTrue(loc.equals(SampleGroceryDistribution.Loc_Cupertino) || 
+					loc.equals(SampleGroceryDistribution.Loc_SanJose), 
+					"Store is expected in Cupertino or San Jose only.");
+			Assert.isTrue(store.getItemsOnSale().contains("Prawn"), "The store does not sell Prawns!");
+			System.out.println("You can buy Prawns at: " + store);
+		});
+		System.out.println("Validated that exactly two Ranch 99 sells Prawns, we are good!");
 	}
 	
 	private boolean validateGrocersByLocation(String location, int howManyExpected) {
