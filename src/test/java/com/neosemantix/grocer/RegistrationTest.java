@@ -1,6 +1,5 @@
 package com.neosemantix.grocer;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -13,8 +12,6 @@ import com.neosemantix.grocer.model.Consumer;
 import com.neosemantix.grocer.model.Grocer;
 import com.neosemantix.grocer.service.RegistrationService;
 import com.neosemantix.grocer.service.StockListService;
-
-import reactor.core.publisher.Flux;
 
 //@SpringBootTest
 @DataMongoTest 

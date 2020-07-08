@@ -2,7 +2,6 @@
 // Author: Umesh Patil, Neosemantix, Inc.
 package com.neosemantix.grocer.rest;
 
-import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
