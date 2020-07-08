@@ -1,0 +1,31 @@
+Json inputs through Postman (ensure that application type is JSON selected)
+===========================================================================
+
+1.	To register a consumer:
+
+{
+	"name": "Mr. John Smith", "location": "Saratoga"
+}
+
+
+2. 	To register a grocer:
+
+{
+	"name": "Nob Hill", "location": "Saratoga", "itemsOnSale": ["Banana", "Milk", "Salmon", "Frozen Pizza", "Organic Milk"]
+}
+
+{
+	"name": "Safeway", "location": "Saratoga", "itemsOnSale": ["Banana", "Milk", "Frozen Pizza", "Organic Milk", "Sourdough Bread"]
+}
+
+{
+	"name": "Ranch 99", "location": "Cupertino", "itemsOnSale": ["Banana", "Milk", "Salmon", "Prawn", "Sourdough Bread"]
+}
+
+{
+	"name": "Ranch 99", "location": "San Jose", "itemsOnSale": ["Banana", "Milk", "Salmon", "Prawn", "Organic Milk"]
+}
+
+{
+	"name": "Safeway", "location": "San Jose", "itemsOnSale": ["Banana", "Milk", "Salmon", "Frozen Pizza", "Sourdough Bread"]
+}
