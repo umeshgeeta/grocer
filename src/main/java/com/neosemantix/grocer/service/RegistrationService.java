@@ -15,6 +15,15 @@ import com.neosemantix.grocer.repo.GrocerRepository;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * Service which registers new consumer and new grocer. It has two flavors of
+ * each functionality:
+ * - one for testing where we block on the DB returned Mono or Flux and then 
+ * return the id of the new entity added and
+ * - the other one for production where we cannot block (WebFlux gives error)
+ * and return the Mono or Flux to the Web Flux which handles streaming entities
+ * to the client.
+ */
 @Service
 public class RegistrationService {
 	

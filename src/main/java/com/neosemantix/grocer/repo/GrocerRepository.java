@@ -9,12 +9,18 @@ import com.neosemantix.grocer.model.Grocer;
 
 import reactor.core.publisher.Flux;
 
+/**
+ * Reactive MongoDB Repository object to manager persistence of Grocer entity.
+ */
 public interface GrocerRepository extends ReactiveMongoRepository<Grocer, String> {
 
 	@Query("{ 'location': ?0 }")
 	Flux<Grocer> findByLocation(String location);
 	
 	/**
+	 * Finds grocer documents for which in their 'items on sale' contains the
+	 * specific item passed. We use 'in' operator specifically for this query.
+	 * 
 	 * Ref.: https://docs.mongodb.com/manual/reference/operator/query/in/
 	 * 
 	 * @param item

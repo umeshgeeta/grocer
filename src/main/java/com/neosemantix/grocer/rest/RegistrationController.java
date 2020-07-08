@@ -15,6 +15,9 @@ import com.neosemantix.grocer.service.RegistrationService;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * REST API end points to register a new consumer or a new grocer.
+ */
 @RestController
 @RequestMapping("/mystore/register")
 public class RegistrationController {

@@ -10,6 +10,12 @@ import com.neosemantix.grocer.repo.GrocerRepository;
 
 import reactor.core.publisher.Flux;
 
+/**
+ * Service layer serving stock listing related calls:
+ * - find grocers with the given location
+ * - find grocers which sell the specified item
+ * - return all grocers in the system.
+ */
 @Service
 public class StockListService {
 
