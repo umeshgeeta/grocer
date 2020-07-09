@@ -16,7 +16,7 @@ Model:
 We use 2 entities - Consumer and Grocer. 
 
 Database:
-We use embedded MongoDB with 2 collections, one each for the entity. Corresponding 2 Reactive Mongo Repositories are used which are utilized by the Service level to expose business functions.
+We use embedded MongoDB with 2 collections, one each for the entity. Corresponding 2 Reactive Mongo Repositories are used which are utilized by the Service level. The service objects implement the business logic.
 
 API End Points:
 Two registration APIs are exposed via RegistrationController while two get calls are exposed via StockListController.
