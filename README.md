@@ -8,7 +8,7 @@ Implement following 4 REST API end points and necessary back-end implementation:
 1)  Register a consumer (POST call to "/mystore/register/consumer")
 2)  Register a grocer with 5 items (POST call to "/mystore/register/gorcer")
 3)  Return grocers for the given location (GET call to "/mystore/stocklist/location")
-4)  Return grocer selling specific item (GET call to "/mystore/stocklist/item")
+4)  Return grocers selling specific item (GET call to "/mystore/stocklist/item")
 
 Error 404 for GET calls and 500 for POST calls.
 
